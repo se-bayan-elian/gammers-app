@@ -1,0 +1,7 @@
+.parent_div {
+  display: flex;
+  align-items: baseline;
+  gap: 3rem;
+  padding-top: 2rem;
+  justify-content: space-around;
+}
