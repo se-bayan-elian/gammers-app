@@ -32,7 +32,7 @@ const commonPages = (additional = [], isUser) => [
 ];
 const authPages = [
   {
-    path: PATHS.AUTH.SIGNIN,
+    index : true,
     element: <LoginPage />,
   },
   {
