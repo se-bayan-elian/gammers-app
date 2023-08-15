@@ -1,5 +1,5 @@
-import { ROLES } from '../constants';
-import { AUTH_ACTIONS } from '../constants/AuthActions';
+import { ROLES } from "../constants";
+import { AUTH_ACTIONS } from "../constants/AuthActions";
 
 export const auth_reducer = (state, action) => {
   switch (action.type) {
@@ -12,9 +12,9 @@ export const auth_reducer = (state, action) => {
     case AUTH_ACTIONS.AUTHORIZE:
       const token = action?.payload?.user?.token || state?.token;
       const role = action?.payload?.user?.isAdmin ? ROLES.ADMIN : ROLES.USER;
-      localStorage.setItem('token', token);
-      localStorage.setItem('role', role);
-      localStorage.setItem('user', JSON.stringify(action.payload.user));
+      localStorage.setItem("token", token);
+      localStorage.setItem("role", role);
+      localStorage.setItem("user", JSON.stringify(action.payload.user));
 
       return {
         ...state,
@@ -27,9 +27,9 @@ export const auth_reducer = (state, action) => {
       };
 
     case AUTH_ACTIONS.LOGOUT:
-      localStorage.removeItem('token');
-      localStorage.removeItem('role');
-      localStorage.removeItem('user');
+      localStorage.removeItem("token");
+      localStorage.removeItem("role");
+      localStorage.removeItem("user");
       return {
         ...state,
         isAuth: false,
