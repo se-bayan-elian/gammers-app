@@ -1,14 +1,15 @@
-import { PATHS } from './paths';
-import LoginPage from '../pages/LoginPage';
-import SignupPage from '../pages/SignupPage';
-import GamesPage from '../pages/GamesPage';
-import ProfilePage from '../pages/ProfilePage';
-import UsersPage from '../pages/UsersPage';
 import GuestGuard from '../components/Guards/GuestGuard';
 import UserGuard from '../components/Guards/UserGaurd';
 import AdminGuard from '../components/Guards/AdminGuard';
-import NotFound from '../pages/NotFound';
 import GamesOutlet from '../components/GmaesOutlet';
+import { PATHS } from './paths';
+import { lazy } from 'react';
+const LoginPage = lazy(() => import('../pages/LoginPage'))
+const NotFound = lazy(() => import('../pages/NotFound'));
+const SignupPage = lazy(() => import('../pages/SignupPage'))
+const GamesPage = lazy(() => import('../pages/GamesPage'))
+const ProfilePage = lazy(() => import('../pages/ProfilePage'));
+const UsersPage = lazy(() => import('../pages/UsersPage'));
 
 
 const commonPages = (additional = [], isUser) => [
@@ -32,7 +33,7 @@ const commonPages = (additional = [], isUser) => [
 ];
 const authPages = [
   {
-    index : true,
+    index: true,
     element: <LoginPage />,
   },
   {

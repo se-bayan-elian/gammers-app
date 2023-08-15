@@ -4,7 +4,6 @@ import Sidebar from "../../components/Sidebar";
 import Header from "../../components/Header";
 import { useThemeContext } from "../../context/ThemeContext";
 import { THEMES } from "../../constants";
-import GamesOutlet from "../../components/GmaesOutlet";
 import { Outlet } from "react-router-dom";
 
 const GamesPage = () => {
