@@ -14,7 +14,7 @@ const Header = () => {
         <Typography variant={"h4"}>{user?.name}</Typography>
       </div>
       <div className={styles.profile_img}>
-        <Link to={(user.isAdmin ? "admin/" : "user/") + PATHS.PROFILE}>
+        <Link to={(user.isAdmin ? "/admin/" : "/user/") + PATHS.PROFILE}>
           <img src="/assets/images/profile-img.jpg" alt="profile pic" />
         </Link>
       </div>

@@ -14,7 +14,7 @@ const Sidebar = () => {
   return (
     <aside className={styles.sidebar}>
       <div className={styles.logo}>
-        <Link to={user.isAdmin ? "admin/" : "user/" + PATHS.Home}>
+        <Link to={user.isAdmin ? "/admin/" : "/user/" + PATHS.Home}>
           <img src="/assets/images/game-logo.svg" className="" alt="logo" />
         </Link>
       </div>

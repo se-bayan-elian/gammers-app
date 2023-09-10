@@ -6,7 +6,6 @@ export const PATHS = {
   Home: "home",
   PROFILE: "account",
   ADMIN: {
-    ROOT: '/',
     USERS: "users",
   },
   NOT_FOUND: "*"

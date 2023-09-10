@@ -2,13 +2,12 @@ import React from "react";
 import { useAuthContext } from "../../../context/AuthContext";
 import { ROLES } from "../../../constants";
 import { PATHS } from "../../../routes/paths";
-import { Outlet, useNavigate } from "react-router-dom";
+import { Navigate, Outlet, useNavigate } from "react-router-dom";
 
 const GuestGuard = () => {
   const { role } = useAuthContext();
-  const navigate = useNavigate();
-  if (role === ROLES.USER) return navigate("user/" + PATHS.Home);
-  if (role === ROLES.ADMIN) return navigate("admin/" + PATHS.Home);
+  if (role === ROLES.USER) return <Navigate to={"/user/" + PATHS.Home} />;
+  if (role === ROLES.ADMIN) return <Navigate to={"/admin/" + PATHS.Home} />;
   return <Outlet />;
 };
 

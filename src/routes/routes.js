@@ -1,36 +1,17 @@
 import GuestGuard from '../components/Guards/GuestGuard';
 import UserGuard from '../components/Guards/UserGaurd';
 import AdminGuard from '../components/Guards/AdminGuard';
-import GamesOutlet from '../components/GmaesOutlet';
 import { PATHS } from './paths';
 import { lazy } from 'react';
 const LoginPage = lazy(() => import('../pages/LoginPage'))
 const NotFound = lazy(() => import('../pages/NotFound'));
 const SignupPage = lazy(() => import('../pages/SignupPage'))
-const GamesPage = lazy(() => import('../pages/GamesPage'))
+const GamesOutlet = lazy(() => import('../components/GmaesOutlet'));
 const ProfilePage = lazy(() => import('../pages/ProfilePage'));
 const UsersPage = lazy(() => import('../pages/UsersPage'));
 
 
-const commonPages = (additional = [], isUser) => [
-  {
-    path: '/',
-    element: (
-      <GamesPage />
-    ),
-    children: [
-      {
-        path: (isUser ? 'user/' : 'admin/') + PATHS.Home,
-        element: <GamesOutlet />,
-      },
-      {
-        path: (isUser ? 'user/' : 'admin/') + PATHS.PROFILE,
-        element: <ProfilePage />,
-      },
-      ...additional
-    ],
-  }
-];
+
 const authPages = [
   {
     index: true,
@@ -43,13 +24,21 @@ const authPages = [
 ];
 const adminPages = [
   {
-    path: PATHS.ADMIN.ROOT,
+    path:'/admin',
     element: <AdminGuard />,
     children: [
-      ...commonPages([{
-        path: PATHS.ADMIN.USERS,
-        element: <UsersPage />,
-      }], false),
+      {
+        path : PATHS.Home,
+        element : <GamesOutlet/>
+      },
+      {
+        path : PATHS.PROFILE,
+        element : <ProfilePage />,
+      },
+      {
+        path : PATHS.ADMIN.USERS,
+        element : <UsersPage/>
+      }
 
     ],
   },
@@ -57,13 +46,19 @@ const adminPages = [
 
 const userPages = [
   {
-    path: '/',
+    path: '/user',
     element: <UserGuard />,
     children: [
-      ...commonPages([], true)
+      {
+        path : PATHS.Home,
+        element : <GamesOutlet />
+      },
+      {
+        path : PATHS.PROFILE,
+        element : <ProfilePage />,
+      }
     ]
-
-
+    
   }
 ];
 
@@ -86,7 +81,7 @@ const routes = [
   },
   {
     path: "*",
-    element: <h1>kfkgfjg</h1>,
+    element:<NotFound />,
   },
 
 ];
